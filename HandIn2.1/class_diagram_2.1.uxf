@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="14.2">
+  <zoom_level>10</zoom_level>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>180</x>
+      <y>510</y>
+      <w>450</w>
+      <h>140</h>
+    </coordinates>
+    <panel_attributes>Adresse
+--
++&lt;&lt;Adresse : type&gt;&gt;
++&lt;&lt;Vejnavn : string&gt;&gt;
++&lt;&lt;HusNr : int&gt;&gt;
++&lt;&lt;PostNr : int&gt;&gt;
++&lt;&lt;ByNavn : string&gt;&gt;
+--
++adresse(addr:type, vN:string, hN:int, postNr:int, bN : string) : Adresse</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>820</x>
+      <y>470</y>
+      <w>230</w>
+      <h>200</h>
+    </coordinates>
+    <panel_attributes>Person
+--
++&lt;&lt;Person : type&gt;&gt;
++&lt;&lt;Navn : string&gt;&gt;
++&lt;&lt;Mellemnavn(null) : string&gt;&gt;
++&lt;&lt;Efternavn : string&gt;&gt;
++&lt;&lt;TelefonNr : int&gt;&gt;
++&lt;&lt;Adresser : type&gt;&gt;
++&lt;&lt;Email : string&gt;&gt;
+--
++person(PK, fN, null, eN,) : Person</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>790</x>
+      <y>60</y>
+      <w>240</w>
+      <h>120</h>
+    </coordinates>
+    <panel_attributes>PersonKartotek
+--
+&lt;&lt;+Kontakt : type&gt;&gt;
+--
++Kontakt(Person, Kt) : Kontakt</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>910</x>
+      <y>360</y>
+      <w>30</w>
+      <h>130</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-
+m1=1
+m2=1</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;110.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>620</x>
+      <y>550</y>
+      <w>220</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-
+m1=1..n
+m2=1..n</panel_attributes>
+    <additional_attributes>200.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1160</x>
+      <y>580</y>
+      <w>130</w>
+      <h>80</h>
+    </coordinates>
+    <panel_attributes>Email
+--
++&lt;&lt;Email : string&gt;&gt;
+--
+email(string):Email
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1160</x>
+      <y>470</y>
+      <w>130</w>
+      <h>90</h>
+    </coordinates>
+    <panel_attributes>Phone
+--
++&lt;&lt;TelefonNr : int&gt;&gt;
+
+--
+phone(int):Phone
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1040</x>
+      <y>500</y>
+      <w>140</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-
+m1=1..n
+m2=1..n</panel_attributes>
+    <additional_attributes>10.0;10.0;120.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>790</x>
+      <y>250</y>
+      <w>240</w>
+      <h>120</h>
+    </coordinates>
+    <panel_attributes>Kontakt
+--
+&lt;&lt;+Person : type&gt;&gt;
++&lt;&lt;Kontakttype : string&gt;&gt;
+--
++person(PK,fN,null,eN) : Person</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>910</x>
+      <y>170</y>
+      <w>50</w>
+      <h>100</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-
+m1=1
+m2=1..n</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;80.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1040</x>
+      <y>600</y>
+      <w>140</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-
+m1=1
+m2=1..n</panel_attributes>
+    <additional_attributes>10.0;10.0;120.0;10.0</additional_attributes>
+  </element>
+</diagram>

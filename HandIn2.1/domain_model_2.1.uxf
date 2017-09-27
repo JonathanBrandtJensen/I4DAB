@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="14.2">
+  <zoom_level>13</zoom_level>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>546</x>
+      <y>364</y>
+      <w>221</w>
+      <h>221</h>
+    </coordinates>
+    <panel_attributes>Person
+--
+PersonType
+Navn
+Mellemnavn(null)
+Efternavn
+TelefonNr
+Email
+
+Alt. Adresse
+FørsteKontaktAdresse
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>182</x>
+      <y>364</y>
+      <w>221</w>
+      <h>169</h>
+    </coordinates>
+    <panel_attributes>FørsteKontaktsAdreresse
+--
+AdresseType
+Vejnavn
+HusNr
+PostNr
+ByNavn
+TelefonNr</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>390</x>
+      <y>364</y>
+      <w>182</w>
+      <h>65</h>
+    </coordinates>
+    <panel_attributes>lt=-
+m1=1..n
+m2=1
+&lt; Har en</panel_attributes>
+    <additional_attributes>10.0;20.0;120.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>936</x>
+      <y>364</y>
+      <w>130</w>
+      <h>169</h>
+    </coordinates>
+    <panel_attributes>Alt. Adresse
+--
+AdresseType
+Vejnavn
+HusNr
+PostNr
+ByNavn
+TelefonNr</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>754</x>
+      <y>364</y>
+      <w>208</w>
+      <h>65</h>
+    </coordinates>
+    <panel_attributes>lt=-
+m1=1
+m2=0..n
+Har en &gt;</panel_attributes>
+    <additional_attributes>10.0;20.0;140.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>520</x>
+      <y>715</y>
+      <w>156</w>
+      <h>65</h>
+    </coordinates>
+    <panel_attributes>PersonKartotek
+--
+Person</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>598</x>
+      <y>572</y>
+      <w>117</w>
+      <h>169</h>
+    </coordinates>
+    <panel_attributes>lt=-
+m1=0..n
+m2=1
+Har en ^</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;110.0</additional_attributes>
+  </element>
+</diagram>
