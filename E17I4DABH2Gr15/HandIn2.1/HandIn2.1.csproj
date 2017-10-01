@@ -32,7 +32,14 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -42,11 +49,103 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AddUtility.cs" />
+    <Compile Include="CRUD\CrudAddress.cs" />
+    <Compile Include="CRUD\CrudContact.cs" />
+    <Compile Include="CRUD\CrudEmail.cs" />
+    <Compile Include="CRUD\CrudPostCode.cs" />
+    <Compile Include="CRUD\CrudTelephone.cs" />
+    <Compile Include="Menus\AddContactMenu.cs" />
+    <Compile Include="Menus\ContactMenu.cs" />
+    <Compile Include="Migrations\201710010843293_InitialCreate.cs" />
+    <Compile Include="Migrations\201710010843293_InitialCreate.Designer.cs">
+      <DependentUpon>201710010843293_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201710011703169_ContextFix.cs" />
+    <Compile Include="Migrations\201710011703169_ContextFix.Designer.cs">
+      <DependentUpon>201710011703169_ContextFix.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201710011706373_Added Phones.cs" />
+    <Compile Include="Migrations\201710011706373_Added Phones.Designer.cs">
+      <DependentUpon>201710011706373_Added Phones.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201710012022326_TryFixedHouseNr.cs" />
+    <Compile Include="Migrations\201710012022326_TryFixedHouseNr.Designer.cs">
+      <DependentUpon>201710012022326_TryFixedHouseNr.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201710012104115_TryFixDatabaseRelations.cs" />
+    <Compile Include="Migrations\201710012104115_TryFixDatabaseRelations.Designer.cs">
+      <DependentUpon>201710012104115_TryFixDatabaseRelations.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201710012105427_TryFixDatabaseRelationsWithIColl.cs" />
+    <Compile Include="Migrations\201710012105427_TryFixDatabaseRelationsWithIColl.Designer.cs">
+      <DependentUpon>201710012105427_TryFixDatabaseRelationsWithIColl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201710012107214_TryFixAddICollToAddress.cs" />
+    <Compile Include="Migrations\201710012107214_TryFixAddICollToAddress.Designer.cs">
+      <DependentUpon>201710012107214_TryFixAddICollToAddress.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201710012112403_TryFixHashSets.cs" />
+    <Compile Include="Migrations\201710012112403_TryFixHashSets.Designer.cs">
+      <DependentUpon>201710012112403_TryFixHashSets.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201710012116163_TryFixHashSetsAgain.cs" />
+    <Compile Include="Migrations\201710012116163_TryFixHashSetsAgain.Designer.cs">
+      <DependentUpon>201710012116163_TryFixHashSetsAgain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201710012208580_TryAgain.cs" />
+    <Compile Include="Migrations\201710012208580_TryAgain.Designer.cs">
+      <DependentUpon>201710012208580_TryAgain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Tables\Address.cs" />
+    <Compile Include="Tables\Contact.cs" />
+    <Compile Include="Menus\ContactListMenu.cs" />
+    <Compile Include="Tables\Email.cs" />
+    <Compile Include="Tables\Kartotek.cs" />
+    <Compile Include="Menus\MainMenu.cs" />
+    <Compile Include="MenuTextFormatter.cs" />
+    <Compile Include="Tables\PostCode.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Menus\SearchContactMenu.cs" />
+    <Compile Include="Tables\Telephone.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201710010843293_InitialCreate.resx">
+      <DependentUpon>201710010843293_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710011703169_ContextFix.resx">
+      <DependentUpon>201710011703169_ContextFix.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710011706373_Added Phones.resx">
+      <DependentUpon>201710011706373_Added Phones.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710012022326_TryFixedHouseNr.resx">
+      <DependentUpon>201710012022326_TryFixedHouseNr.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710012104115_TryFixDatabaseRelations.resx">
+      <DependentUpon>201710012104115_TryFixDatabaseRelations.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710012105427_TryFixDatabaseRelationsWithIColl.resx">
+      <DependentUpon>201710012105427_TryFixDatabaseRelationsWithIColl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710012107214_TryFixAddICollToAddress.resx">
+      <DependentUpon>201710012107214_TryFixAddICollToAddress.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710012112403_TryFixHashSets.resx">
+      <DependentUpon>201710012112403_TryFixHashSets.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710012116163_TryFixHashSetsAgain.resx">
+      <DependentUpon>201710012116163_TryFixHashSetsAgain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710012208580_TryAgain.resx">
+      <DependentUpon>201710012208580_TryAgain.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
