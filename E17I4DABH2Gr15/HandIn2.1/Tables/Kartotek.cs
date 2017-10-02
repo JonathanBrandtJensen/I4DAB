@@ -9,15 +9,10 @@ using System.Threading.Tasks;
 
 namespace HandIn2._1
 {
-    public class Kartotek
-    {
-    }
-
     public class KartotekContext : DbContext
     {
         public KartotekContext() : base("name=HandIn2_GR15")
         {
-
         }
 
         //public DbSet<Kartotek> Kartoteks { get; set; }
