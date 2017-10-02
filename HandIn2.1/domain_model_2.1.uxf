@@ -4,7 +4,7 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>546</x>
+      <x>689</x>
       <y>364</y>
       <w>221</w>
       <h>221</h>
@@ -15,9 +15,9 @@ PersonType
 Navn
 Mellemnavn(null)
 Efternavn
+
 TelefonNr
 Email
-
 Alt. Adresse
 FørsteKontaktAdresse
 </panel_attributes>
@@ -26,7 +26,7 @@ FørsteKontaktAdresse
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>182</x>
+      <x>325</x>
       <y>364</y>
       <w>221</w>
       <h>169</h>
@@ -37,14 +37,13 @@ AdresseType
 Vejnavn
 HusNr
 PostNr
-ByNavn
-TelefonNr</panel_attributes>
+ByNavn</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>390</x>
+      <x>533</x>
       <y>364</y>
       <w>182</w>
       <h>65</h>
@@ -58,7 +57,7 @@ m2=1
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>936</x>
+      <x>1079</x>
       <y>364</y>
       <w>130</w>
       <h>169</h>
@@ -69,14 +68,13 @@ AdresseType
 Vejnavn
 HusNr
 PostNr
-ByNavn
-TelefonNr</panel_attributes>
+ByNavn</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>754</x>
+      <x>897</x>
       <y>364</y>
       <w>208</w>
       <h>65</h>
@@ -90,7 +88,7 @@ Har en &gt;</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>520</x>
+      <x>663</x>
       <y>715</y>
       <w>156</w>
       <h>65</h>
@@ -103,15 +101,72 @@ Person</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>598</x>
+      <x>741</x>
       <y>572</y>
-      <w>117</w>
+      <w>130</w>
       <h>169</h>
     </coordinates>
     <panel_attributes>lt=-
 m1=0..n
 m2=1
-Har en ^</panel_attributes>
+består af ^</panel_attributes>
     <additional_attributes>10.0;10.0;10.0;110.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1053</x>
+      <y>143</y>
+      <w>130</w>
+      <h>169</h>
+    </coordinates>
+    <panel_attributes>Email
+--
+Email
+EmailType</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>546</x>
+      <y>143</y>
+      <w>130</w>
+      <h>169</h>
+    </coordinates>
+    <panel_attributes>TelefonNr
+--
+TelefonNr
+TelefonType
+Teleselskabet</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>884</x>
+      <y>247</y>
+      <w>195</w>
+      <h>143</h>
+    </coordinates>
+    <panel_attributes>lt=-
+m1=1
+m2=0..n
+Har en &gt;</panel_attributes>
+    <additional_attributes>10.0;90.0;10.0;10.0;130.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>663</x>
+      <y>234</y>
+      <w>104</w>
+      <h>156</h>
+    </coordinates>
+    <panel_attributes>lt=-
+m1=1..n
+m2=1
+&lt; Har en</panel_attributes>
+    <additional_attributes>10.0;20.0;60.0;20.0;60.0;100.0</additional_attributes>
   </element>
 </diagram>
