@@ -49,7 +49,6 @@ namespace HandIn2._1
 
 			//Add to DB.
 			CrudContact.Create(newContact, db);
-			CrudContact.Update(db);
 		}
 
 		public static void AddAddress(Contact c, KartotekContext db)
@@ -86,7 +85,6 @@ namespace HandIn2._1
 			newAddress.AddressType = addressType;
 			//--------END---------
 			CrudAddress.Create(c, newAddress, db);
-			CrudAddress.Update(db);
 			AddPostcode(newAddress, db);
 		}
 
@@ -113,7 +111,6 @@ namespace HandIn2._1
 			newPostCode.CityName = cityName;
 			//--------END---------
 			CrudPostCode.Create(a, newPostCode, db);
-			CrudPostCode.Update(db);
 		}
 
 		public static void AddTelephone(Contact c, KartotekContext db)
@@ -149,7 +146,6 @@ namespace HandIn2._1
 			newTelephone.PhoneCompany = phoneCompany;
 			//--------END---------
 			CrudTelephone.Create(c, newTelephone, db);
-			CrudTelephone.Update(db);
 		}
 
 		public static void AddEmail(Contact c, KartotekContext db)
@@ -177,7 +173,6 @@ namespace HandIn2._1
 			//--------END---------
 
 			CrudEmail.Create(c, newEmail, db);
-			CrudEmail.Update(db);
 		}
 	}
 }

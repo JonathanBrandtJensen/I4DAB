@@ -50,7 +50,7 @@ namespace HandIn2._1
 				{
 					Console.WriteLine("Moving on.");
 				}
-				
+				CrudContact.Update(db);
 			}
 		}
 	}

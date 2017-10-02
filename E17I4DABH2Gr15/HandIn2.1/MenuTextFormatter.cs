@@ -33,7 +33,7 @@ namespace HandIn2._1
 			foreach (Address address in c.Addresses)
 			{
 				Console.WriteLine(address.Streetname + " " + address.HousNr);
-				Console.WriteLine(address.PostCode.PostCodeId + address.PostCode.CityName);
+				Console.WriteLine(address.PostCode.PostCodeId + " " + address.PostCode.CityName);
 				Console.WriteLine(address.AddressType);
 				Console.WriteLine();
 			}

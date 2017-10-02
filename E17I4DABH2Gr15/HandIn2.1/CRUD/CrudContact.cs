@@ -37,6 +37,9 @@ namespace HandIn2._1.CRUD
 				Debug.WriteLine("Contact does not exist.");
 				return;
 			}
+			db.Telephones.RemoveRange(tmpContact.Telephones);
+			db.Addresses.RemoveRange(tmpContact.Addresses);
+			db.Emails.RemoveRange(tmpContact.Emails);
 			db.Contacts.Remove(tmpContact);
 			Update(db);
 		}

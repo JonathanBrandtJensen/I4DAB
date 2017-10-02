@@ -7,13 +7,13 @@ namespace HandIn2._1.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class TryAgain : IMigrationMetadata
+    public sealed partial class FixDeletedTables : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(TryAgain));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(FixDeletedTables));
         
         string IMigrationMetadata.Id
         {
-            get { return "201710012208580_TryAgain"; }
+            get { return "201710021158301_FixDeletedTables"; }
         }
         
         string IMigrationMetadata.Source

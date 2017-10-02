@@ -37,7 +37,7 @@ namespace HandIn2._1
 		        .HasColumnName("Contacts");
 	        modelBuilder.Entity<Address>()
 		        .Property(u => u.AddressId)
-		        .HasColumnName("Addresses");
+				.HasColumnName("Addresses");
             modelBuilder.Entity<Email>()
                 .Property(u => u.EmailId)
                 .HasColumnName("Emails");

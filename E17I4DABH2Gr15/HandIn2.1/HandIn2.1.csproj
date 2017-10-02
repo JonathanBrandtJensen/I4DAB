@@ -93,9 +93,13 @@
     <Compile Include="Migrations\201710012116163_TryFixHashSetsAgain.Designer.cs">
       <DependentUpon>201710012116163_TryFixHashSetsAgain.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201710012208580_TryAgain.cs" />
-    <Compile Include="Migrations\201710012208580_TryAgain.Designer.cs">
-      <DependentUpon>201710012208580_TryAgain.cs</DependentUpon>
+    <Compile Include="Migrations\201710021158301_FixDeletedTables.cs" />
+    <Compile Include="Migrations\201710021158301_FixDeletedTables.Designer.cs">
+      <DependentUpon>201710021158301_FixDeletedTables.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201710021200153_Addrest.cs" />
+    <Compile Include="Migrations\201710021200153_Addrest.Designer.cs">
+      <DependentUpon>201710021200153_Addrest.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Tables\Address.cs" />
@@ -143,8 +147,11 @@
     <EmbeddedResource Include="Migrations\201710012116163_TryFixHashSetsAgain.resx">
       <DependentUpon>201710012116163_TryFixHashSetsAgain.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201710012208580_TryAgain.resx">
-      <DependentUpon>201710012208580_TryAgain.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201710021158301_FixDeletedTables.resx">
+      <DependentUpon>201710021158301_FixDeletedTables.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710021200153_Addrest.resx">
+      <DependentUpon>201710021200153_Addrest.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

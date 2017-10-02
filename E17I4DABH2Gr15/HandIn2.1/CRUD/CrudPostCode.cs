@@ -8,9 +8,10 @@ namespace HandIn2._1.CRUD
 		public static void Create(Address a, PostCode p, KartotekContext db)
 		{
 			PostCode tmpPostCode = db.PostCodes.Find(p.PostCodeId);
-			if (p.PostCodeId == tmpPostCode?.PostCodeId)
+			if (tmpPostCode != null)
 			{
 				p.Address.Add(a);
+				a.PostCode = tmpPostCode;
 				Console.WriteLine("Postcode already exists.");
 				return;
 			}
