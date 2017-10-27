@@ -6,32 +6,12 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Azure.Documents;
 
-//Skal vi have ID eller skal postnummeret være ID?
-//Skal vi selv sætte et ID samtidig, eller skal vi lave en auto incrementer?
-//Arrays til embed/reference, eller ICollections for at være generic?
-
 namespace HandIn2._2
 {
 	class Program
 	{
-		public const string EndpointUrl = "https://localhost:8081";
-		public const string PrimaryKey = "C2y6yDjf5/R+ob0N8A7Cgv30VRDJIWEHLM+4QDU5DE2nQ9nDuVTqobD4b8mGGyPMbIZnqyMsEcaGQy67XIw/Jw==";
-
-		static void Main(string[] args)
-		{
-			DocumentClient client = new DocumentClient(new Uri(EndpointUrl), PrimaryKey);
-			client.CreateDatabaseIfNotExistsAsync(new Database() { Id = "KartotekDB" });
-			client.CreateDocumentCollectionIfNotExistsAsync(UriFactory.CreateDatabaseUri("KartotekDB"),
-				new DocumentCollection { Id = "ContactCollection" });
-			client.CreateDocumentCollectionIfNotExistsAsync(UriFactory.CreateDatabaseUri("KartotekDB"),
-				new DocumentCollection { Id = "AddressCollection" });
-			client.CreateDocumentCollectionIfNotExistsAsync(UriFactory.CreateDatabaseUri("KartotekDB"),
-				new DocumentCollection { Id = "EmailCollection" });
-			client.CreateDocumentCollectionIfNotExistsAsync(UriFactory.CreateDatabaseUri("KartotekDB"),
-				new DocumentCollection { Id = "PostCodeCollection" });
-			client.CreateDocumentCollectionIfNotExistsAsync(UriFactory.CreateDatabaseUri("KartotekDB"),
-				new DocumentCollection { Id = "TelephoneCollection" });
-
+	    static void Main(string[] args)
+	    {        
 			int key = 0;
 			while (key != 9)
 			{
@@ -60,7 +40,7 @@ namespace HandIn2._2
 
 					case 3:
 					{
-						AddContactMenu.Show();
+                        AddContactMenu.Show().Wait();
 						break;
 					}
 

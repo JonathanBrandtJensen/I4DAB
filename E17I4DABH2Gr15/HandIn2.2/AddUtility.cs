@@ -52,10 +52,6 @@ namespace HandIn2._2
 			}
 			newContact.PersonType = personType;
 			//--------END---------
-
-			//-------------------------------
-			//     Create Document on DB
-			//-------------------------------
 		}
 
 		#endregion
@@ -97,10 +93,14 @@ namespace HandIn2._2
 			//--------END---------
 
 			//Add postcode if not exists, then create address document on DB.
-			newAddress.PostCodeId = AddPostcode();
+			newAddress.PostCode = AddPostcode();
+            //Add Guid to document
+            newAddress.AddressId = new Guid();
 			//-------------------------------
 			//     Create Document on DB
 			//-------------------------------
+		    CrudAddress.CreateContactDocumentIfNotExists(newAddress);
+            c.AddressIds.Add(newAddress.AddressId);
 
 		}
 
@@ -108,7 +108,7 @@ namespace HandIn2._2
 
 		#region Add Postcode
 
-		public static string AddPostcode()
+		public static PostCode AddPostcode()
 		{
 			PostCode newPostCode = new PostCode();
 
@@ -136,8 +136,8 @@ namespace HandIn2._2
 			//     Create Document on DB
 			//-------------------------------
 			//Create if not exists and return PostCodeId
-			return CrudPostCode.CreatePostCodeDocumentIfNotExists(databaseName, collectionName, newPostCode);
-			
+		    return newPostCode;
+
 		}
 
 		
@@ -146,7 +146,7 @@ namespace HandIn2._2
 
 		#region Add Telephone
 
-		public static void AddTelephone(Contact c, KartotekContext db)
+		public static void AddTelephone(Contact c)
 		{
 			Telephone newTelephone = new Telephone();
 			//Add phone number
@@ -178,7 +178,7 @@ namespace HandIn2._2
 			}
 			newTelephone.PhoneCompany = phoneCompany;
 			//--------END---------
-			CrudTelephone.Create(c, newTelephone, db);
+			c.Telephones.Add(newTelephone);
 		}
 
 		#endregion
@@ -208,7 +208,7 @@ namespace HandIn2._2
 			}
 			newEmail.EmailType = emailType;
 			//--------END---------
-
+            c.Emails.Add(newEmail);
 		}
 
 		#endregion

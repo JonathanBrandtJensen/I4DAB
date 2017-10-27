@@ -1,27 +1,31 @@
 ﻿using System;
 using System.Diagnostics;
+using System.Threading.Tasks;
 using HandIn2._2.CRUD;
 
 namespace HandIn2._2
 {
 	public class AddContactMenu
 	{
-		public static void Show()
+		public static async Task Show()
 		{
 			Console.Clear();
 			MenuTextFormatter.CenteredHeader("Add contact!");
 			Console.WriteLine();
 			Console.WriteLine("New contact information:");
 
-			var newContact = new Contact();
-			AddUtility.AddContact(newContact);
+		    var newContact = new Contact
+		    {
+		        ContactId = Guid.NewGuid()
+		    };
+		    AddUtility.AddContact(newContact);
 			AddUtility.AddAddress(newContact);
 			//Add extra address
 			Console.WriteLine("Want to add another address? 'yes' or 'no'");
 			string answer = Console.ReadLine();
 			if (answer == "yes")
 			{
-				AddUtility.AddAddress(newContact, db);
+				AddUtility.AddAddress(newContact);
 			}
 			else if (answer == "no")
 			{
@@ -32,7 +36,7 @@ namespace HandIn2._2
 			answer = Console.ReadLine();
 			if (answer == "yes")
 			{
-				AddUtility.AddEmail(newContact, db);
+				AddUtility.AddEmail(newContact);
 			}
 			else if (answer == "no")
 			{
@@ -43,13 +47,13 @@ namespace HandIn2._2
 			answer = Console.ReadLine();
 			if (answer == "yes")
 			{
-				AddUtility.AddTelephone(newContact, db);
+				AddUtility.AddTelephone(newContact);
 			}
 			else if (answer == "no")
 			{
 				Console.WriteLine("Moving on.");
 			}
-			CrudContact.Update(db);
+		    await CrudContact.CreateContactDocumentIfNotExists(newContact);
 		}
 	}
 }

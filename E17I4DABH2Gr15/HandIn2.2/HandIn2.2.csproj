@@ -56,7 +56,8 @@
     <Compile Include="Collections\Email.cs" />
     <Compile Include="Collections\PostCode.cs" />
     <Compile Include="Collections\Telephone.cs" />
-    <Compile Include="CRUD\CrudPostCode.cs" />
+    <Compile Include="CosmosConnection.cs" />
+    <Compile Include="CRUD\CrudContact.cs" />
     <Compile Include="Menus\AddContactMenu.cs" />
     <Compile Include="Menus\ContactListMenu.cs" />
     <Compile Include="Menus\ContactMenu.cs" />
