@@ -39,7 +39,7 @@ namespace HandIn2._2
 				}
 				else if (modAction == "d")
 				{
-					CrudContact.Delete(int.Parse(modId), db);
+				    CrudContact.DeleteContactDocument().Wait();
 				}
 				else if (modAction == "s")
 				{
@@ -51,7 +51,7 @@ namespace HandIn2._2
 				}
 			}
 		}
-		public static IEnumerable<Contact> Search(string name, KartotekContext db)
+		public static IEnumerable<Contact> Search(string name)
 		{
 			return db.Contacts.Where(x => x.FirstName.Contains(name));
 		}

@@ -51,13 +51,16 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AddUtility.cs" />
-    <Compile Include="Collections\Address.cs" />
-    <Compile Include="Collections\Contact.cs" />
-    <Compile Include="Collections\Email.cs" />
-    <Compile Include="Collections\PostCode.cs" />
-    <Compile Include="Collections\Telephone.cs" />
+    <Compile Include="Collections\AddressCollection\Address.cs" />
+    <Compile Include="Collections\ContactCollection\Contact.cs" />
+    <Compile Include="Collections\ContactCollection\Email.cs" />
+    <Compile Include="Collections\AddressCollection\PostCode.cs" />
+    <Compile Include="Collections\ContactCollection\Telephone.cs" />
     <Compile Include="CosmosConnection.cs" />
+    <Compile Include="CRUD\CrudAddress.cs" />
     <Compile Include="CRUD\CrudContact.cs" />
+    <Compile Include="CRUD\QueryAddress.cs" />
+    <Compile Include="CRUD\QueryContact.cs" />
     <Compile Include="Menus\AddContactMenu.cs" />
     <Compile Include="Menus\ContactListMenu.cs" />
     <Compile Include="Menus\ContactMenu.cs" />
