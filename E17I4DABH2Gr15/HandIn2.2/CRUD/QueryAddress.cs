@@ -16,9 +16,9 @@ namespace HandIn2._2.CRUD
                     UriFactory.CreateDocumentCollectionUri(CosmosConnection.databaseName, CosmosConnection.addressCollection), queryOptions)
                 .Where(f => f.ContactIds.Contains(c.ContactId));
 
-            ICollection<Address> queryCollectionReturn = null;
+            ICollection<Address> queryCollectionReturn = new List<Address>();
 
-            if (!addressQuery.Any())
+            if (addressQuery.Count() > 0)
             {
                 foreach (Address address in addressQuery)
                 {

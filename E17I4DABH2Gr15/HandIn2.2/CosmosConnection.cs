@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading.Tasks;
 using Microsoft.Azure.Documents;
 using Microsoft.Azure.Documents.Client;
 
@@ -23,14 +24,7 @@ namespace HandIn2._2
 
         private CosmosConnection()
         {
-            var databaseUri = UriFactory.CreateDatabaseUri("KartotekDB");
-
-            client = new DocumentClient(new Uri(EndpointUrl), PrimaryKey);
-            client.CreateDatabaseIfNotExistsAsync(new Database() { Id = databaseName });
-            client.CreateDocumentCollectionIfNotExistsAsync(databaseUri,
-                new DocumentCollection { Id = contactCollection });
-            client.CreateDocumentCollectionIfNotExistsAsync(databaseUri,
-                new DocumentCollection { Id = addressCollection });
+            
         }
 
         /*
@@ -45,6 +39,18 @@ namespace HandIn2._2
         public static CosmosConnection Instance
         {
             get { return instance; }
+        }
+
+        public static async Task StartUp()
+        {
+            var databaseUri = UriFactory.CreateDatabaseUri("KartotekDB");
+
+            client = new DocumentClient(new Uri(EndpointUrl), PrimaryKey);
+            await client.CreateDatabaseIfNotExistsAsync(new Database() { Id = databaseName });
+            await client.CreateDocumentCollectionIfNotExistsAsync(databaseUri,
+                new DocumentCollection { Id = contactCollection });
+            await client.CreateDocumentCollectionIfNotExistsAsync(databaseUri,
+                new DocumentCollection { Id = addressCollection });
         }
     }
 }

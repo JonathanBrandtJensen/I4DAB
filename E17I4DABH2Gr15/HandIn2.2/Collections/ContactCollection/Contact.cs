@@ -10,16 +10,13 @@ namespace HandIn2._2
 	    [JsonProperty(PropertyName = "id")]
         public Guid ContactId { get; set; }
 
-	    private string _contactId;
-
 		public string FirstName { get; set; }
 		public string MiddleName { get; set; }
 		public string LastName { get; set; }
 		public string PersonType { get; set; }
-        [JsonProperty()]
-		public ICollection<Guid> AddressIds { get; set; }
-		public ICollection<Telephone> Telephones { get; set; }
-		public ICollection<Email> Emails { get; set; }
+		public ICollection<Guid> AddressIds { get; set; } = new List<Guid>();
+		public ICollection<Telephone> Telephones { get; set; } = new List<Telephone>();
+		public ICollection<Email> Emails { get; set; } = new List<Email>();
 
 		public override string ToString()
 		{

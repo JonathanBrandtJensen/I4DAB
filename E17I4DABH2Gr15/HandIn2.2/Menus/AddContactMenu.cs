@@ -7,25 +7,33 @@ namespace HandIn2._2
 {
 	public class AddContactMenu
 	{
-		public static async Task Show()
+		public static void Show()
 		{
 			Console.Clear();
 			MenuTextFormatter.CenteredHeader("Add contact!");
 			Console.WriteLine();
 			Console.WriteLine("New contact information:");
 
+		    var newAddress = new Address
+		    {
+		        AddressId = Guid.NewGuid()
+		    };
 		    var newContact = new Contact
 		    {
 		        ContactId = Guid.NewGuid()
 		    };
 		    AddUtility.AddContact(newContact);
-			AddUtility.AddAddress(newContact);
+			AddUtility.AddAddress(newContact, newAddress);
 			//Add extra address
 			Console.WriteLine("Want to add another address? 'yes' or 'no'");
 			string answer = Console.ReadLine();
 			if (answer == "yes")
 			{
-				AddUtility.AddAddress(newContact);
+			    var extraNewAddress = new Address
+			    {
+			        AddressId = Guid.NewGuid()
+			    };
+                AddUtility.AddAddress(newContact, extraNewAddress);
 			}
 			else if (answer == "no")
 			{
@@ -53,7 +61,8 @@ namespace HandIn2._2
 			{
 				Console.WriteLine("Moving on.");
 			}
-		    await CrudContact.CreateContactDocumentIfNotExists(newContact);
-		}
+		    CrudContact.CreateContactDocumentIfNotExists(newContact).Wait();
+		    CrudAddress.CreateAddressDocumentIfNotExists(newAddress).Wait();
+        }
 	}
 }

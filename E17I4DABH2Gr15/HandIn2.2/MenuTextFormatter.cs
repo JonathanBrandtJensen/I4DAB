@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using HandIn2._2.CRUD;
 
 namespace HandIn2._2
 {
@@ -19,21 +21,33 @@ namespace HandIn2._2
 		{
 			if (String.IsNullOrEmpty(c.MiddleName))
 			{
-				Console.WriteLine(c.PersonId + "\t" + c.FirstName + "\t" + c.LastName + "\t" + c.PersonType);
+				Console.WriteLine(c.FirstName + "\t" + c.LastName + "\t" + c.PersonType);
 			}
 			else
 			{
-				Console.WriteLine(c.PersonId + "\t" + c.FirstName + "\t" + c.MiddleName + "\t" + c.LastName + "\t" + c.PersonType);
+				Console.WriteLine(c.FirstName + "\t" + c.MiddleName + "\t" + c.LastName + "\t" + c.PersonType);
 			}
-			
 		}
 
-		public static void PrintAddress(Contact c)
-		{
-			foreach (Address address in c.Addresses)
+	    public static void PrintContact(int key, Contact c)
+	    {
+	        if (String.IsNullOrEmpty(c.MiddleName))
+	        {
+	            Console.WriteLine(key + "\t" + c.FirstName + "\t" + c.LastName + "\t" + c.PersonType);
+	        }
+	        else
+	        {
+	            Console.WriteLine(key + "\t" + c.FirstName + "\t" + c.MiddleName + "\t" + c.LastName + "\t" + c.PersonType);
+	        }
+	    }
+
+        public static void PrintAddress(Contact c)
+        {
+            ICollection<Address> addressCollection = QueryAddress.QueryContactAddressCollection(c);
+			foreach (Address address in addressCollection)
 			{
 				Console.WriteLine(address.Streetname + " " + address.HousNr);
-				Console.WriteLine(address.PostCode.PostCodeId + " " + address.PostCode.CityName);
+				Console.WriteLine(address.PostCode.PostCodeNumber + " " + address.PostCode.CityName);
 				Console.WriteLine(address.AddressType);
 				Console.WriteLine();
 			}

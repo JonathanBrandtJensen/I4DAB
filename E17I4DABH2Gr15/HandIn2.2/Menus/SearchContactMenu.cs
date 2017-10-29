@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using HandIn2._2.CRUD;
@@ -14,46 +15,44 @@ namespace HandIn2._2
 			Console.WriteLine();
 			Console.Write("Search parameter: ");
 			string searchParam = Console.ReadLine();
-			using (var db = new KartotekContext())
-			{
-				IEnumerable<Contact> searchList = Search(searchParam, db);
-				foreach (Contact contact in searchList)
-				{
-					MenuTextFormatter.PrintContact(contact);
-				}
 
-				Console.Write("Enter ID of contact to modify, delete or show: ");
-				string modId = Console.ReadLine();
-				Console.WriteLine("Write 'm' for Modify, 'd' for Delete or 's' for show");
-				string modAction;
-				modAction = Console.ReadLine();
-				if (modAction == "m")
-				{
-					if (string.IsNullOrEmpty(modId))
-					{
-						return;
-					}
-					Contact modContact = CrudContact.Read(int.Parse(modId), db);
-					ModifyContact(modContact);
-					CrudContact.Update(db);
-				}
-				else if (modAction == "d")
-				{
-				    CrudContact.DeleteContactDocument().Wait();
-				}
-				else if (modAction == "s")
-				{
-					ContactMenu.Show(int.Parse(modId), db);
-				}
-				else
-				{
-					Console.WriteLine("'m', 'd' or 's' please.");
-				}
+		    Dictionary<int, Contact> queryDictionary = QueryContact.QueryContactCollection(searchParam);
+		    if (queryDictionary == null)
+		    {
+		        Console.ReadKey();
+                return;
+		    }
+			foreach (KeyValuePair<int, Contact> contact in queryDictionary)
+			{
+				MenuTextFormatter.PrintContact(contact.Key, contact.Value);
 			}
-		}
-		public static IEnumerable<Contact> Search(string name)
-		{
-			return db.Contacts.Where(x => x.FirstName.Contains(name));
+
+			Console.Write("Enter ID of contact to modify, delete or show: ");
+			string modId = Console.ReadLine();
+		    Contact modContact = queryDictionary[int.Parse(modId)];
+            Console.WriteLine("Write 'm' for Modify, 'd' for Delete or 's' for show");
+			string modAction = Console.ReadLine();
+			if (modAction == "m")
+			{
+				if (string.IsNullOrEmpty(modId))
+				{
+					return;
+				}
+				ModifyContact(modContact);
+			    CrudContact.ReplaceContactDocument(modContact).Wait();
+			}
+			else if (modAction == "d")
+			{
+				CrudContact.DeleteContactDocument(modContact.ContactId).Wait();
+			}
+			else if (modAction == "s")
+			{
+				ContactMenu.Show(modContact);
+			}
+			else
+			{
+				Console.WriteLine("'m', 'd' or 's' please.");
+			}
 		}
 
 		/// <summary>

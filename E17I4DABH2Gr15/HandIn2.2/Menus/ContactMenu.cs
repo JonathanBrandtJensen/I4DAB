@@ -5,16 +5,15 @@ namespace HandIn2._2
 {
 	public class ContactMenu
 	{
-		public static void Show(int id, KartotekContext db)
+		public static void Show(Contact c)
 		{
 			Console.Clear();
 			MenuTextFormatter.CenteredHeader("Contact!");
 			Console.WriteLine();
-			Contact currentContact = CrudContact.Read(id, db);
-			MenuTextFormatter.PrintContact(currentContact);
-			MenuTextFormatter.PrintAddress(currentContact);
-			MenuTextFormatter.PrintPhonenumber(currentContact);
-			MenuTextFormatter.PrintEmails(currentContact);
+			MenuTextFormatter.PrintContact(c);
+			MenuTextFormatter.PrintAddress(c);
+			MenuTextFormatter.PrintPhonenumber(c);
+			MenuTextFormatter.PrintEmails(c);
 			Console.WriteLine("Press E to exit");
 			while (Console.ReadLine() != "e")
 			{

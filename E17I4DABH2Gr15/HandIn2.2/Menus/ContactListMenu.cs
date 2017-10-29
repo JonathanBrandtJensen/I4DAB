@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using HandIn2._2.CRUD;
 
 namespace HandIn2._2
@@ -10,10 +12,11 @@ namespace HandIn2._2
 			Console.Clear();
 			MenuTextFormatter.CenteredHeader("Contact list!");
 			Console.WriteLine();
-			Console.WriteLine("ID\t First name\t Middle name\t Last name\t Type\t");
+			Console.WriteLine("First name\t Middle name\t Last name\t Type\t");
 			Console.WriteLine();
-			var contactList = CrudContact.ReadAll();
-			foreach (Contact contact in contactList)
+		    List<Contact> contactList = QueryContact.QuerySimpleContactCollection().ToList();
+		    var sortedList = contactList.OrderBy(f => f.FirstName);
+			foreach (Contact contact in sortedList)
 			{
 				MenuTextFormatter.PrintContact(contact);
 			}

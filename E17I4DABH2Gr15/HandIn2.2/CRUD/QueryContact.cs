@@ -7,22 +7,22 @@ namespace HandIn2._2.CRUD
 {
     public class QueryContact
     {
-        public static ICollection<Contact> QueryContactCollection(string firstname)
+        public static Dictionary<int, Contact> QueryContactCollection(string firstname)
         {
             FeedOptions queryOptions = new FeedOptions { MaxItemCount = -1 };
 
-            // Here we find the Andersen family via its LastName
             IQueryable<Contact> contactQuery = CosmosConnection.client.CreateDocumentQuery<Contact>(
                     UriFactory.CreateDocumentCollectionUri(CosmosConnection.databaseName, CosmosConnection.contactCollection), queryOptions)
-                .Where(f => f.FirstName == firstname);
+                .Where(f => f.FirstName.ToLower().Contains(firstname.ToLower()));
 
-            ICollection<Contact> queryCollectinReturn = null;
+            Dictionary<int, Contact> queryCollectinReturn = new Dictionary<int, Contact>();
 
-            if (!contactQuery.Any())
+            if (contactQuery.Count() > 0)
             {
+                int keyCount = 0;
                 foreach (Contact contact in contactQuery)
                 {
-                    queryCollectinReturn.Add(contact);
+                    queryCollectinReturn.Add(++keyCount, contact);
                 }
                 return queryCollectinReturn;
             }
@@ -31,6 +31,22 @@ namespace HandIn2._2.CRUD
                 Console.WriteLine("No contacts found.");
                 return null;
             }
+        }
+
+        public static ICollection<Contact> QuerySimpleContactCollection()
+        {
+            FeedOptions queryOptions = new FeedOptions { MaxItemCount = -1 };
+
+            IQueryable<Contact> contactQuery = CosmosConnection.client.CreateDocumentQuery<Contact>(
+                UriFactory.CreateDocumentCollectionUri(CosmosConnection.databaseName,
+                    CosmosConnection.contactCollection), queryOptions);
+
+            ICollection<Contact> returnCollection = new List<Contact>();
+            foreach (Contact contact in contactQuery)
+            {
+                returnCollection.Add(contact);
+            }
+            return returnCollection;
         }
     }
 }

@@ -12,6 +12,7 @@ namespace HandIn2._2
 	{
 	    static void Main(string[] args)
 	    {        
+            CosmosConnection.StartUp().Wait();
 			int key = 0;
 			while (key != 9)
 			{
@@ -40,7 +41,7 @@ namespace HandIn2._2
 
 					case 3:
 					{
-                        AddContactMenu.Show().Wait();
+                        AddContactMenu.Show();
 						break;
 					}
 

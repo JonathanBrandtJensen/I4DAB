@@ -58,10 +58,8 @@ namespace HandIn2._2
 
 		#region Add Address
 
-		public static void AddAddress(Contact c)
+		public static void AddAddress(Contact c, Address newAddress)
 		{
-			Address newAddress = new Address();
-
 			//Add streetname
 			Console.Write("Streetname: ");
 			string streetName = Console.ReadLine();
@@ -95,13 +93,11 @@ namespace HandIn2._2
 			//Add postcode if not exists, then create address document on DB.
 			newAddress.PostCode = AddPostcode();
             //Add Guid to document
-            newAddress.AddressId = new Guid();
 			//-------------------------------
 			//     Create Document on DB
 			//-------------------------------
-		    CrudAddress.CreateContactDocumentIfNotExists(newAddress);
             c.AddressIds.Add(newAddress.AddressId);
-
+            newAddress.ContactIds.Add(c.ContactId);
 		}
 
 		#endregion

@@ -31,16 +31,6 @@ namespace HandIn2._2.CRUD
 			}
 		}
 
-	    public static async Task<Contact> ReadFullContact(Contact c)
-	    {
-	        await CosmosConnection.client.ReadDocumentAsync(UriFactory.CreateDocumentUri(CosmosConnection.databaseName,
-	            CosmosConnection.contactCollection, c.ContactId.ToString()));
-            
-
-
-            return 
-	    }
-
         public static async Task ReplaceContactDocument(Contact c)
 	    {
 	        try
