@@ -15,6 +15,8 @@ namespace HandIn2._2
         public const string contactCollection = "ContactCollection";
         public const string addressCollection = "AddressCollection";
 
+        #region Thread safe singleton Imeplementation
+
         private static readonly CosmosConnection instance = new CosmosConnection();
 
         static CosmosConnection()
@@ -27,19 +29,12 @@ namespace HandIn2._2
             
         }
 
-        /*
-        public static CosmosConnection GetDatabase()
-        {
-            return instance ?? (instance = new CosmosConnection());
-        }
-
-        private static CosmosConnection instance;
-        */
-
         public static CosmosConnection Instance
         {
             get { return instance; }
         }
+
+        #endregion
 
         public static async Task StartUp()
         {
@@ -52,5 +47,15 @@ namespace HandIn2._2
             await client.CreateDocumentCollectionIfNotExistsAsync(databaseUri,
                 new DocumentCollection { Id = addressCollection });
         }
+
+        /*
+         * Old none-thread safe singleton implementation
+        public static CosmosConnection GetDatabase()
+        {
+            return instance ?? (instance = new CosmosConnection());
+        }
+
+        private static CosmosConnection instance;
+        */
     }
 }

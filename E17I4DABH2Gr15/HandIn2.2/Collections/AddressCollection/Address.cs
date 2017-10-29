@@ -13,6 +13,6 @@ namespace HandIn2._2
 		public string Streetname { get; set; }
 		public string HousNr { get; set; }
 	    public PostCode PostCode { get; set; }
-	    public ICollection<Guid> ContactIds { get; set; } = new List<Guid>();
+	    public ICollection<Guid> ContactIds { get; set; }
     }
 }

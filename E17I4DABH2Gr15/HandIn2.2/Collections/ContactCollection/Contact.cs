@@ -14,15 +14,13 @@ namespace HandIn2._2
 		public string MiddleName { get; set; }
 		public string LastName { get; set; }
 		public string PersonType { get; set; }
-		public ICollection<Guid> AddressIds { get; set; } = new List<Guid>();
-		public ICollection<Telephone> Telephones { get; set; } = new List<Telephone>();
-		public ICollection<Email> Emails { get; set; } = new List<Email>();
+		public ICollection<Guid> AddressIds { get; set; }
+		public ICollection<Telephone> Telephones { get; set; }
+		public ICollection<Email> Emails { get; set; }
 
 		public override string ToString()
 		{
 			return JsonConvert.SerializeObject(this, Formatting.Indented);
 		}
-
-
 	}
 }

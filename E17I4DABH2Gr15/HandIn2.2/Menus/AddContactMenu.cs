@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.Threading.Tasks;
 using HandIn2._2.CRUD;
@@ -16,11 +17,15 @@ namespace HandIn2._2
 
 		    var newAddress = new Address
 		    {
-		        AddressId = Guid.NewGuid()
+		        AddressId = Guid.NewGuid(),
+                ContactIds = new List<Guid>()
 		    };
 		    var newContact = new Contact
 		    {
-		        ContactId = Guid.NewGuid()
+		        ContactId = Guid.NewGuid(),
+                AddressIds = new List<Guid>(),
+                Telephones = new List<Telephone>(),
+                Emails = new List<Email>()
 		    };
 		    AddUtility.AddContact(newContact);
 			AddUtility.AddAddress(newContact, newAddress);
