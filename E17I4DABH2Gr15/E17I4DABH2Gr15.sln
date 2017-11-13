@@ -1,11 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26730.16
+VisualStudioVersion = 15.0.27004.2006
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HandIn2.1", "HandIn2.1\HandIn2.1.csproj", "{D6B54B05-5197-4AD2-BB16-47BCBBCA48A6}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HandIn2.2", "HandIn2.2\HandIn2.2.csproj", "{AC5B710E-2842-4A70-96EF-25A64D825BEF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Handin3.1", "Handin3.1\Handin3.1.csproj", "{BE6F70A1-6FC5-46BD-AF51-0196F069786D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{AC5B710E-2842-4A70-96EF-25A64D825BEF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AC5B710E-2842-4A70-96EF-25A64D825BEF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AC5B710E-2842-4A70-96EF-25A64D825BEF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BE6F70A1-6FC5-46BD-AF51-0196F069786D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BE6F70A1-6FC5-46BD-AF51-0196F069786D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BE6F70A1-6FC5-46BD-AF51-0196F069786D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BE6F70A1-6FC5-46BD-AF51-0196F069786D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
