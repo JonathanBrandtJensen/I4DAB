@@ -15,7 +15,7 @@ namespace Handin3._2
         }
 
         [Key]
-        public int Addresses { get; set; }
+        public int Id { get; set; }
 
         [Required]
         public string AddressType { get; set; }

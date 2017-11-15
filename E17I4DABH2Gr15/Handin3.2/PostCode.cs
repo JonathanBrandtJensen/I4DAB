@@ -23,4 +23,13 @@ namespace Handin3._2
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Address> Addresses { get; set; }
     }
+    public partial class PostCodeDTO
+    {
+
+        public string PostCodes { get; set; }
+
+        public string CityName { get; set; }
+
+        public List<int> Addresses { get; set; }
+    }
 }

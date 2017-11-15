@@ -40,3 +40,4 @@ namespace Handin3._2
         public virtual ICollection<Address> Addresses { get; set; }
     }
 }
+

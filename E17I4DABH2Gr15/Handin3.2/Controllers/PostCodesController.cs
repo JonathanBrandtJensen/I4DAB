@@ -17,8 +17,17 @@ namespace Handin3._2.Controllers
         private KartotekContext db = new KartotekContext();
 
         // GET: api/PostCodes
-        public IQueryable<PostCode> GetPostCodes()
+        public IQueryable<PostCodeDTO> GetPostCodes()
         {
+            var PostCodes = from b in db.PostCodes
+                            select new PostCodeDTO()
+                            {
+                                PostCodes = b.PostCodes,
+
+                                CityName = b.CityName,
+
+                                AddressIds = b.Addresses.ToList()
+                            };
             return db.PostCodes;
         }
 
