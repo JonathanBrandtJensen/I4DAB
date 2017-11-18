@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Linq;
 using System.Threading.Tasks;
 using HandIn2._2.CRUD;
 
@@ -66,8 +67,17 @@ namespace HandIn2._2
 			{
 				Console.WriteLine("Moving on.");
 			}
-		    CrudContact.CreateContactDocumentIfNotExists(newContact).Wait();
-		    CrudAddress.CreateAddressDocumentIfNotExists(newAddress).Wait();
+		    Address checkExisting = QueryAddress.QueryIfExistingAddress(newAddress);
+		    if (checkExisting == null)
+		    {
+		        CrudContact.CreateContactDocumentIfNotExists(newContact).Wait();
+		        CrudAddress.CreateAddressDocumentIfNotExists(newAddress).Wait();
+            }
+		    else
+		    {
+		        CrudContact.CreateContactDocumentIfNotExists(newContact).Wait();
+            }
+		    
         }
 	}
 }

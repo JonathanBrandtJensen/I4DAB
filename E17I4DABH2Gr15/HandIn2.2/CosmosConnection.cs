@@ -48,8 +48,7 @@ namespace HandIn2._2
                 new DocumentCollection { Id = addressCollection });
         }
 
-        /*
-         * Old none-thread safe singleton implementation
+        /* Old none-thread safe singleton implementation
         public static CosmosConnection GetDatabase()
         {
             return instance ?? (instance = new CosmosConnection());

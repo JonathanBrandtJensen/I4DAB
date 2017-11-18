@@ -93,11 +93,21 @@ namespace HandIn2._2
 			//Add postcode if not exists, then create address document on DB.
 			newAddress.PostCode = AddPostcode();
             //Add Guid to document
-			//-------------------------------
-			//     Create Document on DB
-			//-------------------------------
-            c.AddressIds.Add(newAddress.AddressId);
-            newAddress.ContactIds.Add(c.ContactId);
+            //-------------------------------
+            //     Create Document on DB
+            //-------------------------------
+		    Address checkExisting = QueryAddress.QueryIfExistingAddress(newAddress);
+            if (checkExisting == null)
+		    {
+		        c.AddressIds.Add(newAddress.AddressId);
+                newAddress.ContactIds.Add(c.ContactId);
+		    }
+            else
+            {
+                c.AddressIds.Add(checkExisting.AddressId);
+                checkExisting.ContactIds.Add(c.ContactId);
+                CrudAddress.ReplaceAddressDocument(checkExisting).Wait();
+            }
 		}
 
 		#endregion
@@ -133,7 +143,6 @@ namespace HandIn2._2
 			//-------------------------------
 			//Create if not exists and return PostCodeId
 		    return newPostCode;
-
 		}
 
 		

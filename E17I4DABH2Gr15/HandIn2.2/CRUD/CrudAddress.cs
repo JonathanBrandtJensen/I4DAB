@@ -36,7 +36,7 @@ namespace HandIn2._2.CRUD
             try
             {
                 await CosmosConnection.client.ReplaceDocumentAsync(UriFactory.CreateDocumentUri(CosmosConnection.databaseName,
-                    CosmosConnection.contactCollection, c.AddressId.ToString()), c);
+                    CosmosConnection.addressCollection, c.AddressId.ToString()), c);
             }
             catch (DocumentClientException de)
             {
@@ -52,12 +52,12 @@ namespace HandIn2._2.CRUD
             }
         }
 
-        public static async Task DeleteAddressDocument(Guid contactId)
+        public static async Task DeleteAddressDocument(Guid addressId)
         {
             try
             {
                 await CosmosConnection.client.DeleteDocumentAsync(UriFactory.CreateDocumentUri(CosmosConnection.databaseName,
-                    CosmosConnection.contactCollection, contactId.ToString()));
+                    CosmosConnection.addressCollection, addressId.ToString()));
             }
             catch (DocumentClientException de)
             {

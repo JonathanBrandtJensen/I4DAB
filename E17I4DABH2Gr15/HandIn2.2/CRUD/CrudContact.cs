@@ -55,7 +55,24 @@ namespace HandIn2._2.CRUD
 		{
 		    try
 		    {
-		        await CosmosConnection.client.DeleteDocumentAsync(UriFactory.CreateDocumentUri(CosmosConnection.databaseName,
+		        FeedOptions queryOptions = new FeedOptions { MaxItemCount = -1 };
+
+		        IQueryable<Address> addressQuery = CosmosConnection.client.CreateDocumentQuery<Address>(
+		                UriFactory.CreateDocumentCollectionUri(CosmosConnection.databaseName, CosmosConnection.addressCollection), queryOptions)
+		            .Where(f => f.ContactIds.Contains(contactId));
+
+		        if (addressQuery.Count() > 0)
+		        {
+		            foreach (Address address in addressQuery)
+		            {
+		                if (address.ContactIds.Count == 1)
+		                {
+		                    await CrudAddress.DeleteAddressDocument(address.AddressId);
+		                }
+		            }
+		        }
+
+                await CosmosConnection.client.DeleteDocumentAsync(UriFactory.CreateDocumentUri(CosmosConnection.databaseName,
 		            CosmosConnection.contactCollection, contactId.ToString()));
 		    }
 		    catch (DocumentClientException de)
