@@ -259,3 +259,5 @@ paket-files/
 # Python Tools for Visual Studio (PTVS)
 __pycache__/
 *.pyc
+/E17I4DABH2Gr15/Handin3.2/Areas/HelpPage/Views/Help/DisplayTemplates/*.cshtml
+*.cshtml

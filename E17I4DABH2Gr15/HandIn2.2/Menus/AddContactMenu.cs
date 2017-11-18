@@ -37,7 +37,8 @@ namespace HandIn2._2
 			{
 			    var extraNewAddress = new Address
 			    {
-			        AddressId = Guid.NewGuid()
+			        AddressId = Guid.NewGuid(),
+                    ContactIds = new List<Guid>()
 			    };
                 AddUtility.AddAddress(newContact, extraNewAddress);
 			}
