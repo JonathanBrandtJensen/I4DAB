@@ -1,17 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Data.Entity;
-using System.Data.Entity.Infrastructure;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
-using System.Web.Http;
-using System.Web.Http.Description;
-using Handin3._2;
-
+﻿
 namespace Handin3._2.Controllers
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Data;
+    using System.Data.Entity;
+    using System.Data.Entity.Infrastructure;
+    using System.Linq;
+    using System.Net;
+    using System.Net.Http;
+    using System.Web.Http;
+    using System.Web.Http.Description;
+    using Handin3._2;
     public class PostCodesController : ApiController
     {
         private KartotekContext db = new KartotekContext();
@@ -19,29 +19,47 @@ namespace Handin3._2.Controllers
         // GET: api/PostCodes
         public IQueryable<PostCodeDTO> GetPostCodes()
         {
-            var PostCodes = from b in db.PostCodes
-                            select new PostCodeDTO()
-                            {
-                                PostCodes = b.PostCodes,
+            List<PostCode> PCtemp = db.PostCodes.ToList();
+            var PCDTOtemp = new List<PostCodeDTO>();
+            foreach (var PostCode in PCtemp)
+            {
 
-                                CityName = b.CityName,
-
-                                AddressIds = b.Addresses.ToList()
-                            };
-            return db.PostCodes;
+                var tempDTO = new PostCodeDTO()
+                {
+                    PostCodes = PostCode.PostCodes,
+                    CityName = PostCode.CityName,
+                    AddressIds = new List<int>()
+                };
+                foreach(var Address in PostCode.Addresses)
+                {
+                    tempDTO.AddressIds.Add(Address.Addresses);
+                }
+                PCDTOtemp.Add(tempDTO);
+            }
+            
+            return PCDTOtemp.AsQueryable();
         }
 
         // GET: api/PostCodes/5
-        [ResponseType(typeof(PostCode))]
+        [ResponseType(typeof(PostCodeDTO))]
         public IHttpActionResult GetPostCode(string id)
         {
-            PostCode postCode = db.PostCodes.Find(id);
-            if (postCode == null)
+            PostCode PostCode = db.PostCodes.Find(id);
+            if (PostCode == null)
             {
                 return NotFound();
             }
-
-            return Ok(postCode);
+            var tempDTO = new PostCodeDTO()
+                {
+                    PostCodes = PostCode.PostCodes,
+                    CityName = PostCode.CityName,
+                    AddressIds = new List<int>()
+                };
+            foreach (var Address in PostCode.Addresses)
+            {
+                tempDTO.AddressIds.Add(Address.Addresses);
+            }
+            return Ok(tempDTO);
         }
 
         // PUT: api/PostCodes/5

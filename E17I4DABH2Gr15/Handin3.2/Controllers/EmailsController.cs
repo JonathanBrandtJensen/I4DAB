@@ -17,22 +17,41 @@ namespace Handin3._2.Controllers
         private KartotekContext db = new KartotekContext();
 
         // GET: api/Emails
-        public IQueryable<Email> GetEmails()
+        public IQueryable<EmailDTO> GetEmails()
         {
-            return db.Emails;
+            List<Email> Etemp = db.Emails.ToList();
+            var ADTOtemp = new List<EmailDTO>();
+            foreach (var Email in Etemp)
+            {
+
+                var tempDTO = new EmailDTO()
+                {
+                    Emails = Email.Emails,
+                    EmailType = Email.EmailType,
+                    ContactId = Email.Contact_PersonId
+                };
+                ADTOtemp.Add(tempDTO);
+            }
+
+            return ADTOtemp.AsQueryable();
         }
 
         // GET: api/Emails/5
-        [ResponseType(typeof(Email))]
+        [ResponseType(typeof(EmailDTO))]
         public IHttpActionResult GetEmail(string id)
         {
-            Email email = db.Emails.Find(id);
-            if (email == null)
+            Email Email = db.Emails.Find(id);
+            if (Email == null)
             {
                 return NotFound();
             }
-
-            return Ok(email);
+            var tempDTO = new EmailDTO()
+            {
+                 Emails = Email.Emails,
+                 EmailType = Email.EmailType,
+                 ContactId = Email.Contact_PersonId
+            };
+            return Ok(tempDTO);
         }
 
         // PUT: api/Emails/5
@@ -71,7 +90,7 @@ namespace Handin3._2.Controllers
         }
 
         // POST: api/Emails
-        [ResponseType(typeof(Email))]
+        [ResponseType(typeof(EmailDTO))]
         public IHttpActionResult PostEmail(Email email)
         {
             if (!ModelState.IsValid)

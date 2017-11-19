@@ -30,6 +30,6 @@ namespace Handin3._2
 
         public string CityName { get; set; }
 
-        public List<int> Addresses { get; set; }
+        public List<int> AddressIds { get; set; }
     }
 }
