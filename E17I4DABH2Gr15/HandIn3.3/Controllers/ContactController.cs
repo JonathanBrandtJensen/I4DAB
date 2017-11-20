@@ -4,15 +4,17 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using HandIn2._2.Collections.ContactCollection;
+using HandIn2._2.Repositories;
 
 namespace HandIn3._3.Controllers
 {
     public class ContactController : ApiController
     {
         // GET: api/Contact
-        public IEnumerable<string> Get()
+        public IEnumerable<Contact> Get()
         {
-            return new string[] { "value1", "value2" };
+            return WebApiApplication.ContactRepo.GetAllContacts();
         }
 
         // GET: api/Contact/5
