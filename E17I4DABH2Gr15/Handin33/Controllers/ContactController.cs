@@ -35,10 +35,6 @@ namespace Handin33.Controllers
             contact.Id = Guid.NewGuid();
             foreach (Address address in tempAddressList)
             {
-                /*var checkExistingAddress = WebApiApplication.AddressRepo.GetAllAddresses().Where(f => f.AddressType == address.AddressType &&
-                    f.HousNr == address.HousNr &&
-                    f.Streetname == address.Streetname &&
-                    f.PostCode == address.PostCode);*/
                 var checkAddress = WebApiApplication.AddressRepo.CheckExisting(address);
                 if (checkAddress != null)
                 {
