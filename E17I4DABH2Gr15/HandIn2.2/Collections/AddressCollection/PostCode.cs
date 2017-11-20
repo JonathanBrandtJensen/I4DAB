@@ -1,4 +1,4 @@
-﻿namespace HandIn2._2
+﻿namespace HandIn2._2.Collections.AddressCollection
 {
     public class PostCode
     {

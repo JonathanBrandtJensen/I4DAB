@@ -1,14 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
+using HandIn2._2.Collections;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
 
-namespace HandIn2._2
+namespace HandIn2._2.Collections.ContactCollection
 {
-	public class Contact
+	public class Contact : IHasIdentifier
 	{
 	    [JsonProperty(PropertyName = "id")]
-        public Guid ContactId { get; set; }
+        public Guid Id { get; set; }
 
 		public string FirstName { get; set; }
 		public string MiddleName { get; set; }

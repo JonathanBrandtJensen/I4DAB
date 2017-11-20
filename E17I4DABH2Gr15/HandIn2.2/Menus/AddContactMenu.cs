@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
+using HandIn2._2.Collections.AddressCollection;
+using HandIn2._2.Collections.ContactCollection;
 using HandIn2._2.CRUD;
 
 namespace HandIn2._2
@@ -18,12 +20,12 @@ namespace HandIn2._2
 
 		    var newAddress = new Address
 		    {
-		        AddressId = Guid.NewGuid(),
+		        Id = Guid.NewGuid(),
                 ContactIds = new List<Guid>()
 		    };
 		    var newContact = new Contact
 		    {
-		        ContactId = Guid.NewGuid(),
+		        Id = Guid.NewGuid(),
                 AddressIds = new List<Guid>(),
                 Telephones = new List<Telephone>(),
                 Emails = new List<Email>()
@@ -37,7 +39,7 @@ namespace HandIn2._2
 			{
 			    var extraNewAddress = new Address
 			    {
-			        AddressId = Guid.NewGuid(),
+			        Id = Guid.NewGuid(),
                     ContactIds = new List<Guid>()
 			    };
                 AddUtility.AddAddress(newContact, extraNewAddress);

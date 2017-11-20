@@ -1,6 +1,6 @@
 ﻿
 
-namespace HandIn2._2
+namespace HandIn2._2.Collections.ContactCollection
 {
     public class Telephone
     {

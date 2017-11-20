@@ -50,25 +50,27 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AddUtility.cs" />
     <Compile Include="Collections\AddressCollection\Address.cs" />
     <Compile Include="Collections\ContactCollection\Contact.cs" />
     <Compile Include="Collections\ContactCollection\Email.cs" />
     <Compile Include="Collections\AddressCollection\PostCode.cs" />
     <Compile Include="Collections\ContactCollection\Telephone.cs" />
+    <Compile Include="Collections\IHasIdentifier.cs" />
     <Compile Include="CosmosConnection.cs" />
-    <Compile Include="CRUD\CrudAddress.cs" />
-    <Compile Include="CRUD\CrudContact.cs" />
-    <Compile Include="CRUD\QueryAddress.cs" />
-    <Compile Include="CRUD\QueryContact.cs" />
-    <Compile Include="Menus\AddContactMenu.cs" />
-    <Compile Include="Menus\ContactListMenu.cs" />
-    <Compile Include="Menus\ContactMenu.cs" />
-    <Compile Include="Menus\MainMenu.cs" />
-    <Compile Include="Menus\SearchContactMenu.cs" />
+    <Compile Include="CRUD\CRUD.cs" />
+    <Compile Include="CRUD\ICRUD.cs" />
+    <Compile Include="Factory\IRepoFactory.cs" />
+    <Compile Include="Factory\RepoFactory.cs" />
+    <Compile Include="IMenuTextFormatter.cs" />
     <Compile Include="MenuTextFormatter.cs" />
-    <Compile Include="Program.cs" />
+    <Compile Include="DocDB.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\AddressRepo.cs" />
+    <Compile Include="Repositories\ContactRepo.cs" />
+    <Compile Include="Repositories\GenericRepo.cs" />
+    <Compile Include="Repositories\IAddressRepo.cs" />
+    <Compile Include="Repositories\IContactRepo.cs" />
+    <Compile Include="Repositories\IGenericRepo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

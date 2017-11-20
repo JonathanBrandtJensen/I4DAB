@@ -2,12 +2,12 @@
 using System.Collections.Generic;
 using Newtonsoft.Json;
 
-namespace HandIn2._2
+namespace HandIn2._2.Collections.AddressCollection
 {
-    public class Address
+    public class Address : IHasIdentifier
     {
         [JsonProperty("id")]
-        public Guid AddressId { get; set; }
+        public Guid Id { get; set; }
 
         public string AddressType { get; set; }
 		public string Streetname { get; set; }

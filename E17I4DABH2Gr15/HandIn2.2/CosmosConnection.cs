@@ -10,18 +10,16 @@ namespace HandIn2._2
         private const string EndpointUrl = "https://localhost:8081";
         private const string PrimaryKey = "C2y6yDjf5/R+ob0N8A7Cgv30VRDJIWEHLM+4QDU5DE2nQ9nDuVTqobD4b8mGGyPMbIZnqyMsEcaGQy67XIw/Jw==";
 
-        public static DocumentClient client;
+        public static DocumentClient Client;
         public const string databaseName = "KartotekDB";
         public const string contactCollection = "ContactCollection";
         public const string addressCollection = "AddressCollection";
 
         #region Thread safe singleton Imeplementation
 
-        private static readonly CosmosConnection instance = new CosmosConnection();
-
         static CosmosConnection()
         {
-            
+            StartUp().Wait();
         }
 
         private CosmosConnection()
@@ -29,10 +27,7 @@ namespace HandIn2._2
             
         }
 
-        public static CosmosConnection Instance
-        {
-            get { return instance; }
-        }
+        public static CosmosConnection Instance { get; } = new CosmosConnection();
 
         #endregion
 
@@ -40,21 +35,12 @@ namespace HandIn2._2
         {
             var databaseUri = UriFactory.CreateDatabaseUri("KartotekDB");
 
-            client = new DocumentClient(new Uri(EndpointUrl), PrimaryKey);
-            await client.CreateDatabaseIfNotExistsAsync(new Database() { Id = databaseName });
-            await client.CreateDocumentCollectionIfNotExistsAsync(databaseUri,
+            Client = new DocumentClient(new Uri(EndpointUrl), PrimaryKey);
+            await Client.CreateDatabaseIfNotExistsAsync(new Database() { Id = databaseName });
+            await Client.CreateDocumentCollectionIfNotExistsAsync(databaseUri,
                 new DocumentCollection { Id = contactCollection });
-            await client.CreateDocumentCollectionIfNotExistsAsync(databaseUri,
+            await Client.CreateDocumentCollectionIfNotExistsAsync(databaseUri,
                 new DocumentCollection { Id = addressCollection });
         }
-
-        /* Old none-thread safe singleton implementation
-        public static CosmosConnection GetDatabase()
-        {
-            return instance ?? (instance = new CosmosConnection());
-        }
-
-        private static CosmosConnection instance;
-        */
     }
 }

@@ -1,23 +1,31 @@
 ﻿using System;
 using System.Collections.Generic;
+using HandIn2._2.Collections.AddressCollection;
+using HandIn2._2.Collections.ContactCollection;
 using HandIn2._2.CRUD;
+using HandIn2._2.Factory;
 
 namespace HandIn2._2
 {
-	public class MenuTextFormatter
+	public class MenuTextFormatter : IMenuTextFormatter
 	{
-		public static void CenteredHeader(string text)
+	    public IRepoFactory RepoFactory;
+	    MenuTextFormatter()
+	    {
+	        RepoFactory = new RepoFactory();
+	    }
+		public void CenteredHeader(string text)
 		{
 			string headerText = text;
 			Console.WriteLine("{0," + ((Console.WindowWidth / 2) + (headerText.Length / 2)) + "}", headerText);
 		}
-
-		public static void MenuItem(string ItemName, string text)
+ 
+		public void MenuItem(string itemName, string text)
 		{
-			Console.WriteLine("(" + ItemName + ")" + "\t " + text);
+			Console.WriteLine("(" + itemName + ")" + "\t " + text);
 		}
 
-		public static void PrintContact(Contact c)
+		public void PrintContact(Contact c)
 		{
 			if (String.IsNullOrEmpty(c.MiddleName))
 			{
@@ -29,7 +37,7 @@ namespace HandIn2._2
 			}
 		}
 
-	    public static void PrintContact(int key, Contact c)
+	    public void PrintContact(int key, Contact c)
 	    {
 	        if (String.IsNullOrEmpty(c.MiddleName))
 	        {
@@ -41,9 +49,9 @@ namespace HandIn2._2
 	        }
 	    }
 
-        public static void PrintAddress(Contact c)
+        public void PrintAddresses(Contact c)
         {
-            ICollection<Address> addressCollection = QueryAddress.QueryContactAddressCollection(c);
+            ICollection<Address> addressCollection = RepoFactory.AddressRepo.GetAddressListByContact(c);
 			foreach (Address address in addressCollection)
 			{
 				Console.WriteLine(address.Streetname + " " + address.HousNr);
@@ -53,7 +61,7 @@ namespace HandIn2._2
 			}
 		}
 
-		public static void PrintPhonenumber(Contact c)
+		public void PrintPhonenumber(Contact c)
 		{
 			Console.WriteLine("Phone numbers:");
 			foreach (Telephone telephone in c.Telephones)
@@ -62,7 +70,7 @@ namespace HandIn2._2
 			}
 		}
 
-		public static void PrintEmails(Contact c)
+		public void PrintEmails(Contact c)
 		{
 			Console.WriteLine("Emails:");
 			foreach (Email email in c.Emails)
@@ -70,5 +78,7 @@ namespace HandIn2._2
 				Console.WriteLine(email.EmailId + " " + email.EmailType);
 			}
 		}
+
+
 	}
 }

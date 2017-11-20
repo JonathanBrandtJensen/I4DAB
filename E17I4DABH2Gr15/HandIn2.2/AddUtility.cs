@@ -1,6 +1,8 @@
 ﻿using System;
 using System.CodeDom;
 using System.Net;
+using HandIn2._2.Collections.AddressCollection;
+using HandIn2._2.Collections.ContactCollection;
 using HandIn2._2.CRUD;
 using Microsoft.Azure.Documents;
 using Microsoft.Azure.Documents.Client;
@@ -9,7 +11,6 @@ namespace HandIn2._2
 {
 	public class AddUtility
 	{
-
 		#region Add Contact
 		public static void AddContact(Contact newContact)
 		{

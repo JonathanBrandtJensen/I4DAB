@@ -1,4 +1,5 @@
 ﻿using System;
+using HandIn2._2.Collections.ContactCollection;
 using HandIn2._2.CRUD;
 
 namespace HandIn2._2
