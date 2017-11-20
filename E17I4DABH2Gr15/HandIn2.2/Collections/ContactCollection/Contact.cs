@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using HandIn2._2.Collections;
+using HandIn2._2.Collections.AddressCollection;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
 
@@ -16,6 +17,7 @@ namespace HandIn2._2.Collections.ContactCollection
 		public string LastName { get; set; }
 		public string PersonType { get; set; }
 		public ICollection<Guid> AddressIds { get; set; }
+        public ICollection<Address> Addresses { get; set; }
 		public ICollection<Telephone> Telephones { get; set; }
 		public ICollection<Email> Emails { get; set; }
 

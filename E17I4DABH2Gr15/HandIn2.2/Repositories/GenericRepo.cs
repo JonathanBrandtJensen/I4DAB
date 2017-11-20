@@ -11,16 +11,18 @@ namespace HandIn2._2.Repositories
             _crud = crud;
         }
 
-        public T Get(Guid id)
+        public T Get(string id)
         {
             var task = _crud.ReadDocument(id);
             task.Wait();
             return task.Result;
         }
 
-        public void Create(T objectToCreate)
+        public string Create(T objectToCreate)
         {
-            _crud.CreateDocument(objectToCreate).Wait();
+            var task = _crud.CreateDocument(objectToCreate);
+            task.Wait();
+            return task.Result;
         }
 
         public bool Update(T objectToUpdate)

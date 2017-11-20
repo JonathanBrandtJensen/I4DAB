@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using HandIn2._2.Collections;
 using Microsoft.Azure.Documents;
 using Microsoft.Azure.Documents.Client;
+using Microsoft.Azure.Documents.SystemFunctions;
 
 namespace HandIn2._2.CRUD
 {
@@ -24,7 +25,7 @@ namespace HandIn2._2.CRUD
         {
             var documentRespons = await CosmosConnection.Client.CreateDocumentAsync(
                 UriFactory.CreateDocumentCollectionUri(_databaseId,
-                    _collectionId), objectToCreate);
+                    _collectionId), objectToCreate).ConfigureAwait(false);
             return documentRespons.Resource.Id;
         }
 
@@ -33,7 +34,7 @@ namespace HandIn2._2.CRUD
             try
             {
                 await CosmosConnection.Client.DeleteDocumentAsync(UriFactory.CreateDocumentUri(_databaseId,
-                    _collectionId, objectToDelete.ToString()));
+                    _collectionId, objectToDelete.ToString())).ConfigureAwait(false);
                 return true;
             }
             catch (DocumentClientException de)
@@ -58,12 +59,12 @@ namespace HandIn2._2.CRUD
                 UriFactory.CreateDocumentCollectionUri(_databaseId, _collectionId), queryOptions);
         }
 
-        public async Task<T> ReadDocument(Guid idOfObject)
+        public async Task<T> ReadDocument(string idOfObject)
         {
             try
             {
                 var documentResponse = await CosmosConnection.Client.ReadDocumentAsync<T>(UriFactory.CreateDocumentUri(
-                    _databaseId, _collectionId, idOfObject.ToString()));
+                    _databaseId, _collectionId, idOfObject)).ConfigureAwait(false);
                 return documentResponse.Document;
             }
             catch (DocumentClientException de)
@@ -81,7 +82,7 @@ namespace HandIn2._2.CRUD
             try
             {
                 await CosmosConnection.Client.ReplaceDocumentAsync(
-                    UriFactory.CreateDocumentUri(_databaseId, _collectionId, objectToReplace.Id.ToString()), objectToReplace);
+                    UriFactory.CreateDocumentUri(_databaseId, _collectionId, objectToReplace.Id.ToString()), objectToReplace).ConfigureAwait(false);
                 return true;
             }
             catch (DocumentClientException de)

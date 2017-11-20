@@ -36,11 +36,11 @@ namespace HandIn2._2
             var databaseUri = UriFactory.CreateDatabaseUri("KartotekDB");
 
             Client = new DocumentClient(new Uri(EndpointUrl), PrimaryKey);
-            await Client.CreateDatabaseIfNotExistsAsync(new Database() { Id = databaseName });
-            await Client.CreateDocumentCollectionIfNotExistsAsync(databaseUri,
-                new DocumentCollection { Id = contactCollection });
-            await Client.CreateDocumentCollectionIfNotExistsAsync(databaseUri,
-                new DocumentCollection { Id = addressCollection });
+            Client.CreateDatabaseIfNotExistsAsync(new Database() { Id = databaseName }).Wait();
+            Client.CreateDocumentCollectionIfNotExistsAsync(databaseUri,
+                new DocumentCollection { Id = contactCollection }).Wait();
+            Client.CreateDocumentCollectionIfNotExistsAsync(databaseUri,
+                new DocumentCollection { Id = addressCollection }).Wait();
         }
     }
 }

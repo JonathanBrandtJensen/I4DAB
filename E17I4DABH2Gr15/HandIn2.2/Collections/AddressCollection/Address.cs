@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using HandIn2._2.Collections.ContactCollection;
 using Newtonsoft.Json;
 
 namespace HandIn2._2.Collections.AddressCollection
@@ -14,5 +15,6 @@ namespace HandIn2._2.Collections.AddressCollection
 		public string HousNr { get; set; }
 	    public PostCode PostCode { get; set; }
 	    public ICollection<Guid> ContactIds { get; set; }
+        public ICollection<Contact> Contacts { get; set; }
     }
 }

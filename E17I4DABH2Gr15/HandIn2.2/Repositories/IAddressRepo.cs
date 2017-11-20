@@ -8,5 +8,6 @@ namespace HandIn2._2.Repositories
     {
         List<Address> GetAllAddresses();
         List<Address> GetAddressListByContact(Contact c);
+        Address CheckExisting(Address adress);
     }
 }
