@@ -4,15 +4,17 @@ using HandIn2._2.Collections.AddressCollection;
 using HandIn2._2.Collections.ContactCollection;
 using HandIn2._2.CRUD;
 using HandIn2._2.Factory;
+using HandIn2._2.Repositories;
 
 namespace HandIn2._2
 {
 	public class MenuTextFormatter : IMenuTextFormatter
 	{
-	    public IRepoFactory RepoFactory;
-	    MenuTextFormatter()
+	    private IContactRepo _contactRepo;
+
+        MenuTextFormatter()
 	    {
-	        RepoFactory = new RepoFactory();
+	        _contactRepo = new ContactRepo(new CRUD<Contact>(CosmosConnection.databaseName, CosmosConnection.contactCollection));
 	    }
 		public void CenteredHeader(string text)
 		{

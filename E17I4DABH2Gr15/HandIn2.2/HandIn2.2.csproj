@@ -61,8 +61,6 @@
     <Compile Include="CRUD\ICRUD.cs" />
     <Compile Include="Factory\IRepoFactory.cs" />
     <Compile Include="Factory\RepoFactory.cs" />
-    <Compile Include="IMenuTextFormatter.cs" />
-    <Compile Include="MenuTextFormatter.cs" />
     <Compile Include="DocDB.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\AddressRepo.cs" />
