@@ -17,22 +17,54 @@ namespace Handin3._2.Controllers
         private KartotekContext db = new KartotekContext();
 
         // GET: api/Addresses
-        public IQueryable<Address> GetAddresses()
+        public IQueryable<AddressDTO> GetAddresses()
         {
-            return db.Addresses;
-        }
+            List<Address> Atemp = db.Addresses.ToList();
+            var ADTOtemp = new List<AddressDTO>();
+            foreach (var Address in Atemp)
+            {
 
+                var tempDTO = new AddressDTO()
+                {
+                    Addresses = Address.Addresses,
+                    AddressType = Address.AddressType,
+                    Streetname = Address.Streetname,
+                    HousNr = Address.HousNr,
+                    PostCodes = Address.PostCode_PostCodeId,
+                    ContactIds = new List<int>()
+                };
+                foreach(var Contact in Address.Contacts)
+                {
+                    tempDTO.ContactIds.Add(Contact.Contacts);
+                }
+            ADTOtemp.Add(tempDTO);
+            }
+            
+            return ADTOtemp.AsQueryable();
+        }
         // GET: api/Addresses/5
-        [ResponseType(typeof(Address))]
+        [ResponseType(typeof(AddressDTO))]
         public IHttpActionResult GetAddress(int id)
         {
-            Address address = db.Addresses.Find(id);
-            if (address == null)
+            Address Address = db.Addresses.Find(id);
+            if (Address == null)
             {
                 return NotFound();
             }
-
-            return Ok(address);
+            var tempDTO = new AddressDTO()
+            {
+                Addresses = Address.Addresses,
+                AddressType = Address.AddressType,
+                Streetname = Address.Streetname,
+                HousNr = Address.HousNr,
+                PostCodes = Address.PostCode_PostCodeId,
+                ContactIds = new List<int>()
+            };
+            foreach (var Contact in Address.Contacts)
+            {
+                tempDTO.ContactIds.Add(Contact.Contacts);
+            }
+            return Ok(tempDTO);
         }
 
         // PUT: api/Addresses/5

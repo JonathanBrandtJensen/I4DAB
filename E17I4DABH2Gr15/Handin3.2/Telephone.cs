@@ -21,4 +21,12 @@ namespace Handin3._2
 
         public virtual Contact Contact { get; set; }
     }
+    public partial class TelephoneDTO
+    {
+        public string TelephoneNr { get; set; }
+        public string TelephoneType { get; set; }
+        public string PhoneCompany { get; set; }
+        public int Contact_PersonId { get; set; }
+
+    }
 }

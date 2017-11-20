@@ -17,22 +17,75 @@ namespace Handin3._2.Controllers
         private KartotekContext db = new KartotekContext();
 
         // GET: api/Contacts
-        public IQueryable<Contact> GetContacts()
+        public IQueryable<ContactDTO> GetContacts()
         {
-            return db.Contacts;
+            List<Contact> Ctemp = db.Contacts.ToList();
+            var CDTOtemp = new List<ContactDTO>();
+            foreach (var Contact in Ctemp)
+            {
+
+                var tempDTO = new ContactDTO()
+                {
+                    Contacts = Contact.Contacts,
+                    FirstName = Contact.FirstName,
+                    MiddleName = Contact.MiddleName,
+                    LastName = Contact.LastName,
+                    PersonType = Contact.PersonType,
+                    EmailIds = new List<string>(),
+                    TelephoneIds = new List<string>(),
+                    AddressIds = new List<int>(),
+                };
+                foreach (var Address in Contact.Addresses)
+                {
+                    tempDTO.AddressIds.Add(Address.Addresses);
+                }
+                foreach (var Email in Contact.Emails)
+                {
+                    tempDTO.EmailIds.Add(Email.Emails);
+                }
+                foreach (var Telephone in Contact.Telephones)
+                {
+                    tempDTO.TelephoneIds.Add(Telephone.TelephoneNr);
+                }
+                CDTOtemp.Add(tempDTO);
+            }
+
+            return CDTOtemp.AsQueryable();
         }
 
         // GET: api/Contacts/5
-        [ResponseType(typeof(Contact))]
+        [ResponseType(typeof(ContactDTO))]
         public IHttpActionResult GetContact(int id)
         {
-            Contact contact = db.Contacts.Find(id);
-            if (contact == null)
+            Contact Contact = db.Contacts.Find(id);
+            if (Contact == null)
             {
                 return NotFound();
             }
-
-            return Ok(contact);
+            var tempDTO = new ContactDTO()
+            {
+                Contacts = Contact.Contacts,
+                FirstName = Contact.FirstName,
+                MiddleName = Contact.MiddleName,
+                LastName = Contact.LastName,
+                PersonType = Contact.PersonType,
+                EmailIds = new List<string>(),
+                TelephoneIds = new List<string>(),
+                AddressIds = new List<int>(),
+            };
+            foreach (var Address in Contact.Addresses)
+            {
+                tempDTO.AddressIds.Add(Address.Addresses);
+            }
+            foreach (var Email in Contact.Emails)
+            {
+                tempDTO.EmailIds.Add(Email.Emails);
+            }
+            foreach (var Telephone in Contact.Telephones)
+            {
+                tempDTO.TelephoneIds.Add(Telephone.TelephoneNr);
+            }
+            return Ok(tempDTO);
         }
 
         // PUT: api/Contacts/5
@@ -82,23 +135,53 @@ namespace Handin3._2.Controllers
             db.Contacts.Add(contact);
             db.SaveChanges();
 
-            return CreatedAtRoute("DefaultApi", new { id = contact.Contacts }, contact);
+            Contact Contact = db.Contacts.Find(contact.Contacts);
+            if (Contact == null)
+            {
+                return NotFound();
+            }
+            var tempDTO = new ContactDTO()
+            {
+                Contacts = Contact.Contacts,
+                FirstName = Contact.FirstName,
+                MiddleName = Contact.MiddleName,
+                LastName = Contact.LastName,
+                PersonType = Contact.PersonType,
+                EmailIds = new List<string>(),
+                TelephoneIds = new List<string>(),
+                AddressIds = new List<int>(),
+            };
+            foreach (var Address in Contact.Addresses)
+            {
+                tempDTO.AddressIds.Add(Address.Addresses);
+            }
+            foreach (var Email in Contact.Emails)
+            {
+                tempDTO.EmailIds.Add(Email.Emails);
+            }
+            foreach (var Telephone in Contact.Telephones)
+            {
+                tempDTO.TelephoneIds.Add(Telephone.TelephoneNr);
+            }
+            return CreatedAtRoute("DefaultApi", new { id = contact.Contacts }, tempDTO);
         }
 
         // DELETE: api/Contacts/5
         [ResponseType(typeof(Contact))]
         public IHttpActionResult DeleteContact(int id)
         {
-            Contact contact = db.Contacts.Find(id);
-            if (contact == null)
+            var tmpContact = db.Contacts.Find(id);
+            if (tmpContact == null)
             {
                 return NotFound();
             }
-
-            db.Contacts.Remove(contact);
+            db.Telephones.RemoveRange(tmpContact.Telephones);
+            db.Addresses.RemoveRange(tmpContact.Addresses);
+            db.Emails.RemoveRange(tmpContact.Emails);
+            db.Contacts.Remove(tmpContact);
             db.SaveChanges();
 
-            return Ok(contact);
+            return Ok(tmpContact);
         }
 
         protected override void Dispose(bool disposing)

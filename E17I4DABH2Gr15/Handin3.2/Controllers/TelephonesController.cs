@@ -17,22 +17,46 @@ namespace Handin3._2.Controllers
         private KartotekContext db = new KartotekContext();
 
         // GET: api/Telephones
-        public IQueryable<Telephone> GetTelephones()
+        public IQueryable<TelephoneDTO> GetTelephones()
         {
-            return db.Telephones;
+            List<Telephone> Ttemp = db.Telephones.ToList();
+            if(Ttemp == null)
+            {
+                return null;
+            }
+            var TDTOtemp = new List<TelephoneDTO>();
+            foreach (var Telephone in Ttemp)
+            {
+
+                var tempDTO = new TelephoneDTO()
+                {
+                    TelephoneNr = Telephone.TelephoneNr,
+                    TelephoneType = Telephone.TelephoneType,
+                    PhoneCompany = Telephone.PhoneCompany,
+                    Contact_PersonId = Telephone.Contact_PersonId,
+                };
+            TDTOtemp.Add(tempDTO);
+            }
+            return TDTOtemp.AsQueryable();
         }
 
         // GET: api/Telephones/5
-        [ResponseType(typeof(Telephone))]
+        [ResponseType(typeof(TelephoneDTO))]
         public IHttpActionResult GetTelephone(string id)
         {
-            Telephone telephone = db.Telephones.Find(id);
-            if (telephone == null)
+            Telephone Telephone = db.Telephones.Find(id);
+            if (Telephone == null)
             {
                 return NotFound();
             }
-
-            return Ok(telephone);
+            var tempDTO = new TelephoneDTO()
+            {
+                TelephoneNr = Telephone.TelephoneNr,
+                TelephoneType = Telephone.TelephoneType,
+                PhoneCompany = Telephone.PhoneCompany,
+                Contact_PersonId = Telephone.Contact_PersonId,
+            };
+            return Ok(tempDTO);
         }
 
         // PUT: api/Telephones/5

@@ -39,5 +39,16 @@ namespace Handin3._2
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Address> Addresses { get; set; }
     }
+    public partial class ContactDTO
+    {
+        public int Contacts { get; set; }
+        public string FirstName { get; set; }
+        public string MiddleName { get; set; }
+        public string LastName { get; set; }
+        public string PersonType { get; set; }
+        public List<string> EmailIds { get; set; }
+        public List<string> TelephoneIds { get; set; }
+        public List<int> AddressIds { get; set; }
+    }
 }
 

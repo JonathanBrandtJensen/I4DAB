@@ -15,7 +15,7 @@ namespace Handin3._2
         }
 
         [Key]
-        public int Id { get; set; }
+        public int Addresses { get; set; }
 
         [Required]
         public string AddressType { get; set; }
@@ -34,5 +34,21 @@ namespace Handin3._2
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Contact> Contacts { get; set; }
+    }
+
+    public partial class AddressDTO
+    {
+
+        public int Addresses { get; set; }
+
+        public string AddressType { get; set; }
+
+        public string Streetname { get; set; }
+
+        public string HousNr { get; set; }
+
+        public string PostCodes { get; set; }
+
+        public List<int> ContactIds { get; set; }
     }
 }

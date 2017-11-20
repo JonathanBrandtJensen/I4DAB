@@ -18,4 +18,10 @@ namespace Handin3._2
 
         public virtual Contact Contact { get; set; }
     }
+    public partial class EmailDTO
+    {
+        public string Emails { get; set; }
+        public string EmailType { get; set; }
+        public int ContactId { get; set; }
+    }
 }
